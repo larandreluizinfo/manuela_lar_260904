@@ -627,10 +627,21 @@ function startChapter(idx) {
     G.decor.push({ x: rnd(0, WORLD_W), y: rnd(0, WORLD_H), r: rnd(10, 48) });
   }
 
-  G.ch.enemies.forEach((k, i) => {
-    const a = (i / G.ch.enemies.length) * Math.PI * 2;
-    const r = 330 + i * 50;
-    G.spawnQueue.push({ kind: k, x: G.player.x + Math.cos(a) * r, y: G.player.y + Math.sin(a) * r, at: 0.5 + i * 1.2 });
+  const roster = G.ch.enemies.slice();
+  const target = 3 + Math.floor(G.ch.n / 2) + (G.ch.s - 1);
+  const queueKinds = [];
+  for (let i = 0; i < target; i++) queueKinds.push(roster[i % roster.length]);
+  if (G.ch.boss) queueKinds.push(G.ch.boss);
+
+  queueKinds.forEach((k, i) => {
+    const a = (i / queueKinds.length) * Math.PI * 2;
+    const r = 320 + (i % 3) * 60;
+    G.spawnQueue.push({
+      kind: k,
+      x: G.player.x + Math.cos(a) * r,
+      y: G.player.y + Math.sin(a) * r,
+      at: 0.5 + i * 0.9
+    });
   });
 
   $("#enemyBarWrap").classList.add("hidden");
