@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>manuela_lar_260904</title>
-  </head>
-  <body>
-    <h1>Bem-vindo ao manuela_lar_260904</h1>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Stranger Things — O Jogo</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app">
+  <div id="menu" class="screen">
+    <h1 class="logo">STRANGER THINGS</h1>
+    <p class="tagline">30 Capítulos · 5 Temporadas · Mundo Invertido</p>
+    <div class="menu-buttons">
+      <button id="btnPlay" class="btn btn-primary">JOGAR</button>
+      <button id="btnChapters" class="btn">CAPÍTULOS</button>
+      <button id="btnCharacters" class="btn">PERSONAGENS</button>
+      <button id="btnMonsters" class="btn">MONSTROS</button>
+      <button id="btnItems" class="btn">ARMAS & OBJETOS</button>
+    </div>
+    <p class="hint">Setas ou WASD para mover · Espaço para atacar · E para telecinese</p>
+  </div>
+
+  <div id="chapterSelect" class="screen hidden">
+    <div class="panel wide">
+      <h2>SELECIONE O CAPÍTULO</h2>
+      <div id="seasonTabs" class="season-tabs"></div>
+      <div id="chapterGrid" class="chapter-grid"></div>
+      <button class="btn btn-back" data-back>VOLTAR</button>
+    </div>
+  </div>
+
+  <div id="characters" class="screen hidden">
+    <div class="panel wide">
+      <h2>PERSONAGENS</h2>
+      <div id="charGrid" class="char-grid"></div>
+      <button class="btn btn-back" data-back>VOLTAR</button>
+    </div>
+  </div>
+
+  <div id="monsters" class="screen hidden">
+    <div class="panel wide">
+      <h2>MONSTROS & VILÕES</h2>
+      <div id="monsterGrid" class="char-grid"></div>
+      <button class="btn btn-back" data-back>VOLTAR</button>
+    </div>
+  </div>
+
+  <div id="items" class="screen hidden">
+    <div class="panel wide">
+      <h2>ARMAS & OBJETOS</h2>
+      <div id="itemGrid" class="char-grid"></div>
+      <button class="btn btn-back" data-back>VOLTAR</button>
+    </div>
+  </div>
+
+  <div id="game" class="screen hidden">
+    <canvas id="canvas" width="960" height="540"></canvas>
+
+    <div id="hud">
+      <div class="hud-left">
+        <div class="hp-wrap">
+          <div class="bar hp"><div id="hpBar"></div></div>
+          <span class="bar-label">VIDA</span>
+        </div>
+        <div class="hp-wrap">
+          <div class="bar pw"><div id="powerBar"></div></div>
+          <span class="bar-label">TELECINESE</span>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div id="chapterInfo"></div>
+        <div id="weaponInfo"></div>
+        <div id="scoreInfo"></div>
+      </div>
+    </div>
+
+    <div id="enemyBarWrap" class="hidden">
+      <div id="enemyName"></div>
+      <div class="bar enemy"><div id="enemyBar"></div></div>
+    </div>
+
+    <div id="objective"></div>
+    <div id="message" class="hidden"></div>
+
+    <div id="touchControls">
+      <div id="dpad">
+        <button class="dbtn" data-dir="up" aria-label="Cima">▲</button>
+        <button class="dbtn" data-dir="left" aria-label="Esquerda">◀</button>
+        <button class="dbtn" data-dir="right" aria-label="Direita">▶</button>
+        <button class="dbtn" data-dir="down" aria-label="Baixo">▼</button>
+      </div>
+      <div id="actionButtons">
+        <button id="btnAttack" class="abtn attack">ATACAR</button>
+        <button id="btnPower" class="abtn power">TELECINESE</button>
+        <button id="btnSwap" class="abtn swap">ARMA</button>
+        <button id="btnPause" class="abtn pause">❚❚</button>
+      </div>
+    </div>
+
+    <div id="pauseMenu" class="overlay hidden">
+      <div class="panel">
+        <h2>PAUSA</h2>
+        <button id="btnResume" class="btn btn-primary">CONTINUAR</button>
+        <button id="btnRestart" class="btn">REINICIAR CAPÍTULO</button>
+        <button id="btnQuit" class="btn">SAIR PARA O MENU</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+<script src="js/main.js"></script>
+</body>
 </html>
